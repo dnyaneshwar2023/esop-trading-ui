@@ -5,6 +5,7 @@ function createField(fieldName,value) {
     const field = document.createElement("p");
     const node = document.createTextNode(`${fieldName} : ${value}`)
     field.appendChild(node)
+    field.classList.add("content")
     return field;
 }
 const createCard = (order) => {
@@ -15,6 +16,7 @@ const createCard = (order) => {
     card.appendChild(createField("type",order.type));
     card.appendChild(createField("quantity",order.quantity));
     card.appendChild(createField("price",order.price));
+    card.appendChild(createField("status", order?.status))
 
     if(order.type == "SELL") {
         card.appendChild(createField("ESOP Type", order.esopType))

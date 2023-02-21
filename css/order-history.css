@@ -29,3 +29,7 @@ body {
     border-color: blue;
     border-style: solid;
 }
+
+.content {
+    font-weight: bold;
+}
