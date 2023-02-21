@@ -13,6 +13,7 @@ submitButton.onclick = (e) => {
     const quantity = document.getElementById("quantity").value
     const type = document.getElementById("type").value
     var esopType = document.getElementById("esoptype").value
+    var userName = document.getElementById("username").value
 
     console.log(price)
     console.log(quantity)
@@ -27,7 +28,7 @@ submitButton.onclick = (e) => {
        body["esopType"] = esopType
     }   
 
-    fetch("http://localhost:8080/user/amaan/order", {
+    fetch(`http://localhost:8080/user/${userName}/order`, {
         method: "POST",
         body: JSON.stringify({...body}),
         headers: {
