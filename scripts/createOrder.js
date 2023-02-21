@@ -11,17 +11,17 @@ function submitForm(event) {
 submitButton.onclick = (e) => {
     const price = document.getElementById("price").value
     const quantity = document.getElementById("quantity").value
-    const type = document.getElementById("type").value
-    var esopType = document.getElementById("esoptype").value
-    var userName = document.getElementById("username").value
+    const type = document.getElementById("selector").value
+    var esopType = document.getElementById("esoptype")?.value
+    var userName = document.getElementById("username")?.value
 
     console.log(price)
     console.log(quantity)
     console.log(type)
     var body = {
-        price,
-        quantity,
-        type,
+        price: parseInt(price),
+        quantity: parseInt(quantity),
+        type
     }
 
     if (type == "SELL") {
@@ -55,9 +55,11 @@ submitButton.onclick = (e) => {
 
 
 function toggleESOPInput() {
-    const currentType = document.getElementById("type").value
-    console.log("toggle")
+    const currentType = document.getElementById("selector").value
+    console.log(currentType)
+
     if (currentType == "BUY") {
+        console.log(document.getElementById("esopsection").classList)
         document.getElementById("esopsection").classList.add("hidden")
     }
     else {
