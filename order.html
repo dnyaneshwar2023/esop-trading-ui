@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Create Order</title>
+</head>
+
+<body>
+    <form style="padding-top: 200px;">
+        <label for="quantity">Quantity:</label><br>
+        <input id="quantity" type="number" name="quantity" placeholder="Quantity">
+
+        <br><br>
+        <label for="price">Price:</label><br>
+        <input id="price" type="number" name="price" placeholder="Price">
+        <br><br>
+
+        <label for="type">Order Type:</label><br>
+        <select id="type" name="type" id="type">
+            <option value="BUY">BUY</option>
+            <option value="SELL">SELL</option>
+        </select>
+
+        <br><br>
+        <button id="submit" type="submit">Submit </button>
+
+    </form>
+    
+    <script src="./scripts/createOrder.js" />
+</body>
+
+</html>
