@@ -10,26 +10,40 @@
 </head>
 
 <body>
-    <form style="padding-top: 200px;">
-        <label for="quantity">Quantity:</label><br>
-        <input id="quantity" type="number" name="quantity" placeholder="Quantity">
-
-        <br><br>
-        <label for="price">Price:</label><br>
-        <input id="price" type="number" name="price" placeholder="Price">
-        <br><br>
-
-        <label for="type">Order Type:</label><br>
-        <select id="type" name="type" id="type">
-            <option value="BUY">BUY</option>
-            <option value="SELL">SELL</option>
-        </select>
-
-        <br><br>
-        <button id="submit" type="submit">Submit </button>
-
-    </form>
     
+    <div>
+        <div>
+            <h2>Create New Order</h2>
+        </div>
+        <form>
+            <label for="type">Order Type:</label>
+            <select id="type" name="type" id="type" onchange="return toggleESOPInput()">
+                <option value="BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
+            <br><br>
+            <label for="quantity">Quantity:</label><br>
+            <input id="quantity" type="number" name="quantity" placeholder="Quantity">
+
+            <br><br>
+            <label for="price">Price:</label><br>
+            <input id="price" type="number" name="price" placeholder="Price">
+            <br><br>
+
+            <div id="esopsection" class="hidden">
+                <label for="esoptype">ESOP Type:</label>
+                <select id="esoptype" name="esoptype" id="esoptype">
+                    <option value="NON_PERFORMANCE">NORMAL</option>
+                    <option value="PERFORMANCE">PERFORMANCE</option>
+                </select>
+            </div>
+
+            <br>
+            <button id="submit" type="submit">Submit </button>
+        </form>
+    </div>
+
+
     <script src="./scripts/createOrder.js" />
 </body>
 
