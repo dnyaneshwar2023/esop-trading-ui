@@ -15,8 +15,8 @@ body {
 
 .container {
     display: flex;
-    width: 80%;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .card {
