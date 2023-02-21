@@ -2,9 +2,17 @@ body {
     display: flex;
     flex: content;
     justify-content: center;
-    
+
 }
 
 .hidden {
     display: none;
+}
+
+.card {
+    padding: 10px;
+    border-width: 5px;
+    border-color: blue;
+    border-style: solid;
+
 }
