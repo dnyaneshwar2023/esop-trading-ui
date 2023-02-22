@@ -4,7 +4,7 @@ import '../css/create-order.css'
 
 const submitButton = document.getElementById("submit")
 
-submitButton.onclick = (e) => {
+submitButton.onclick = async (e) => {
     const price = document.getElementById("price").value
     const quantity = document.getElementById("quantity").value
     const type = document.getElementById("selector").value
@@ -23,27 +23,6 @@ submitButton.onclick = (e) => {
     if (type == "SELL") {
        body["esopType"] = esopType
     }   
-
-    fetch(`http://localhost:8080/user/${userName}/order`, {
-        method: "POST",
-        body: JSON.stringify({...body}),
-        headers: {
-            "Content-type": "application/json"
-        }
-    }).then(response => response.json().then(res => {
-        console.log(res)
-        
-        if(response.status == 400) {
-            return alert("Invalid Request")
-        }
-        if(res.errors == undefined) {
-            alert("Order Placed Successfully")
-        }
-        else
-        {
-            alert(res.errors)
-        }
-    }))
 
     e.preventDefault()
 
