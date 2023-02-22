@@ -1,6 +1,7 @@
-import "../css/index.css"
+import "../css/index.css";
+import '../css/order-history.css';
 
-import '../css/order-history.css'
+import getOrderHistory  from "./getOrders";
 
 const submitButton = document.getElementById("submit")
 
@@ -43,10 +44,3 @@ submitButton.onclick = (e) => {
 }
 
 
-const getOrderHistory = (userName) => {
-    return fetch(`http://localhost:8080/user/${userName}/order`, {
-        method: "GET"
-    }).then(response => response.json().then(res => {
-        return res;
-    }))
-}
