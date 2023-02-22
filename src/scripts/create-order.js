@@ -1,19 +1,15 @@
+import "../css/index.css"
+
+import '../css/create-order.css'
 
 const submitButton = document.getElementById("submit")
-
-
-function submitForm(event) {
-    event.preventDefault()
-
-    console.log(event)
-}
 
 submitButton.onclick = (e) => {
     const price = document.getElementById("price").value
     const quantity = document.getElementById("quantity").value
     const type = document.getElementById("selector").value
-    var esopType = document.getElementById("esoptype")?.value
-    var userName = document.getElementById("username")?.value
+    var esopType = document.getElementById("esoptype").value
+    var userName = document.getElementById("username").value
 
     console.log(price)
     console.log(quantity)
@@ -56,7 +52,6 @@ submitButton.onclick = (e) => {
 
 function toggleESOPInput() {
     const currentType = document.getElementById("selector").value
-    console.log(currentType)
 
     if (currentType == "BUY") {
         console.log(document.getElementById("esopsection").classList)

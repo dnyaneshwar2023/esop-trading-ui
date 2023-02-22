@@ -1,3 +1,6 @@
+import "../css/index.css"
+
+import '../css/order-history.css'
 
 const submitButton = document.getElementById("submit")
 
@@ -16,7 +19,8 @@ const createCard = (order) => {
     card.appendChild(createField("type",order.type));
     card.appendChild(createField("quantity",order.quantity));
     card.appendChild(createField("price",order.price));
-    card.appendChild(createField("status", order?.status))
+    card.appendChild(createField("status", order.status))
+    
 
     if(order.type == "SELL") {
         card.appendChild(createField("ESOP Type", order.esopType))
