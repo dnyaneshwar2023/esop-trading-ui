@@ -1,16 +1,19 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-pages = ["index","create-order", "order-history"]
+const pages = ["index","create-order", "order-history"]
 
-module.exports = {
+var config ={}
+
+export default config = {
+
   entry: pages.reduce((config, page) => {
     config[page] = `./src/scripts/${page}.js`;
     return config;
   }, {}),
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(process.cwd(), "dist")
   },
   devServer: {
     contentBase: './dist'
