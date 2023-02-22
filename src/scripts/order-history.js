@@ -1,7 +1,7 @@
 import "../css/index.css";
 import '../css/order-history.css';
 
-import getOrderHistory  from "./getOrders";
+import OrderHistoryService from "./OrderHistoryService.js";
 
 const submitButton = document.getElementById("submit")
 
@@ -32,7 +32,8 @@ const createCard = (order) => {
 submitButton.onclick = (e) => {
     var userName = document.getElementById("username").value
 
-    var history = getOrderHistory(userName)
+    let orderHistoryService = OrderHistoryService()
+    var history = orderHistoryService.getOrderHistory(userName)
 
     var orderField = document.getElementById("orders")
     orderField.innerHTML = ""
