@@ -1,29 +1,36 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
-const ESLintPlugin = require('eslint-webpack-plugin');
+
+pages = ["index","create-order", "order-history"]
 
 module.exports = {
-  entry: './src/index.js',
+  entry: pages.reduce((config, page) => {
+    config[page] = `./src/scripts/${page}.js`;
+    return config;
+  }, {}),
   output: {
-    filename: 'output.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist")
   },
   devServer: {
     contentBase: './dist'
   },
+  stats: {
+    warnings: false
+  },
   devtool: 'eval-source-map',
-  plugins: [
-    new ESLintPlugin(),
-    new CleanWebpackPlugin({
-      verbose: true
-    }),
-    new HtmlWebpackPlugin({
-      title: 'JavaScript Template',
-      template: './src/index.html',
-      inject: 'body'
-    })
-  ],
+  plugins: [].concat(
+    pages.map((page) =>
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: `./src/${page}.html`,
+        filename: `${page}.html`,
+        chunks: [page],
+        inject: 'body'
+
+      })
+    )
+  ),
   module: {
     rules: [
       {
