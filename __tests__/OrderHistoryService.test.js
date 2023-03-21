@@ -8,24 +8,32 @@ describe("Order History Tests", () => {
             { orderId: 1, price: 10, quantity: 10, type: "BUY" }
         ]
 
-        global.fetch = jest.fn().mockImplementation(() => {
+        let mockFecth = jest.fn().mockImplementation(() => {
             return Promise.resolve({
                 json: () => Promise.resolve(mockResponse)
             });
         });
 
+        global.fetch = mockFecth
+
         let orderHistory = await getOrderHistory(mockUser)
         expect(orderHistory).toEqual(mockResponse)
+        expect(mockFecth).toHaveBeenCalledTimes(1)
+        expect(mockFecth).toHaveBeenCalledWith(`http://localhost:8080/user/${mockUser}/order`, { method: "GET" })
     })
 
-    it("should return error message when there is an error fetching order history", async () =>{
+    it("should return error message when there is an error fetching order history", async () => {
         let mockUser = "dnyaneshwar_ware"
 
-        global.fetch = jest.fn().mockImplementation(() => {
+        let mockFecth = jest.fn().mockImplementation(() => {
             return Promise.reject()
         });
 
+        global.fetch = mockFecth
+
         let orderHistory = await getOrderHistory(mockUser)
         expect(orderHistory).toEqual([])
+        expect(mockFecth).toHaveBeenCalledTimes(1)
+        expect(mockFecth).toHaveBeenCalledWith(`http://localhost:8080/user/${mockUser}/order`, { method: "GET" })
     })
 })
