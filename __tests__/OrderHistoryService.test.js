@@ -16,7 +16,6 @@ describe("Order History Tests", () => {
         });
 
         let orderHistory = await orderHistoryService.getOrderHistory(mockUser)
-        console.log(orderHistory)
         expect(orderHistory).toEqual(mockResponse)
     })
 
@@ -29,7 +28,6 @@ describe("Order History Tests", () => {
         });
 
         let orderHistory = await orderHistoryService.getOrderHistory(mockUser)
-        console.log(orderHistory)
         expect(orderHistory).toEqual([])
     })
 })
