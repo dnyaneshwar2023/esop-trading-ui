@@ -4,7 +4,7 @@ import OrderHistoryService from "../src/scripts/OrderHistoryService"
 describe("Create Order Tests", () => {
     let createOrderService = new CreateOrderService()
 
-    it("should return error given insufficient amount in wallet", async () => {
+    it("should return error given insufficient amount in wallet for buy order", async () => {
         let response = await createOrderService.placeOrder({
             price: 10,
             quantity: 10,
@@ -15,7 +15,6 @@ describe("Create Order Tests", () => {
     })
 
     it("should return error given user doesn't exits", async () => {
-        
         expect({}).toEqual({ })
     })
 })
