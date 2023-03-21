@@ -19,4 +19,17 @@ describe("Order History Tests", () => {
         console.log(orderHistory)
         expect(orderHistory).toEqual(mockResponse)
     })
+
+    it("should return error message when there is an error fetching order history", async () =>{
+        let orderHistoryService = new OrderHistoryService()
+        let mockUser = "dnyaneshwar_ware"
+
+        global.fetch = jest.fn().mockImplementation(() => {
+            return Promise.reject()
+        });
+
+        let orderHistory = await orderHistoryService.getOrderHistory(mockUser)
+        console.log(orderHistory)
+        expect(orderHistory).toEqual([])
+    })
 })
