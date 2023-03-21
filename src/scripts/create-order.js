@@ -1,7 +1,7 @@
 import "../css/index.css"
 
 import '../css/create-order.css'
-import CreateOrderService from "./Services/CreateOrderService"
+import CreateOrderService from "./Services/CreateOrderService.js"
 
 const submitButton = document.getElementById("submit")
 
