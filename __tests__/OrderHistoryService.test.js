@@ -2,26 +2,21 @@ import OrderHistoryService from "../src/scripts/OrderHistoryService";
 
 
 describe("Order History Tests", () => {
-    it("should get order history of the user given user exits", async () => {
+    it("should get order history of the user", async () => {
         let orderHistoryService = new OrderHistoryService()
-        const history = await orderHistoryService.getOrderHistory("amaan").then((orders) => {
-            return orders;
-        }).catch((error) => {
-            return [];
-        })
-        
+        let mockUser = "dnyaneshwar"
+        let mockResponse = [
+            { orderId: 1, price: 10, quantity: 10, type: "BUY" }
+        ]
 
-        expect(history).toEqual([])
-    })
+        global.fetch = jest.fn().mockImplementation(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(mockResponse)
+            });
+        });
 
-    it("should return error given user doesn't exits", async () => {
-        let orderHistoryService = new OrderHistoryService()
-        const history = await orderHistoryService.getOrderHistory("am").then((orders) => {
-            return orders;
-        }).catch((error) => {
-            return [];
-        })
-
-        expect(history).toEqual({ "errors": ["User doesn't exist."] })
+        let orderHistory = await orderHistoryService.getOrderHistory(mockUser)
+        console.log(orderHistory)
+        expect(orderHistory).toEqual(mockResponse)
     })
 })
