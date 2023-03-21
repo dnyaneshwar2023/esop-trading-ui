@@ -1,5 +1,6 @@
 import CreateOrderService from "../src/scripts/CreateOrderService"
 import OrderHistoryService from "../src/scripts/OrderHistoryService"
+import CreateBuyOrderSuccess from "../stubs/CreateBuyOrderSuccess"
 
 describe("Create Order Tests", () => {
     let createOrderService = new CreateOrderService()
@@ -14,7 +15,16 @@ describe("Create Order Tests", () => {
         expect(response).toEqual(["Insufficient amount in wallet"])
     })
 
-    it("should return error given user doesn't exits", async () => {
-        expect({}).toEqual({ })
+    it("should create buy order", async() => {
+        let buyorderService = new CreateBuyOrderSuccess()
+
+        let response = JSON.parse(await buyorderService.placeOrder({price: 10,
+            quantity: 10,
+            type: "BUY"}, "amaan"))
+        
+        expect(response.price).toEqual(10)
+
     })
+
+    
 })
