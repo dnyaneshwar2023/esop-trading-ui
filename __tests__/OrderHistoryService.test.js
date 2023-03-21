@@ -1,4 +1,4 @@
-import OrderHistoryService from "../src/scripts/OrderHistoryService";
+import OrderHistoryService from "../src/scripts/Services/OrderHistoryService";
 
 
 describe("Order History Tests", () => {

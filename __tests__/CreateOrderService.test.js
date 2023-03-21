@@ -1,5 +1,5 @@
 
-import CreateOrderService from "../src/scripts/CreateOrderService"
+import CreateOrderService from "../src/scripts/Services/CreateOrderService"
 
 describe("Create Order Tests", () => {
     let createOrderService = new CreateOrderService()
