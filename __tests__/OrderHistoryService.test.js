@@ -1,9 +1,8 @@
-import OrderHistoryService from "../src/scripts/Services/OrderHistoryService";
+import getOrderHistory from "../src/scripts/Services/OrderHistoryService";
 
 
 describe("Order History Tests", () => {
     it("should get order history of the user", async () => {
-        let orderHistoryService = new OrderHistoryService()
         let mockUser = "dnyaneshwar"
         let mockResponse = [
             { orderId: 1, price: 10, quantity: 10, type: "BUY" }
@@ -15,19 +14,18 @@ describe("Order History Tests", () => {
             });
         });
 
-        let orderHistory = await orderHistoryService.getOrderHistory(mockUser)
+        let orderHistory = await getOrderHistory(mockUser)
         expect(orderHistory).toEqual(mockResponse)
     })
 
     it("should return error message when there is an error fetching order history", async () =>{
-        let orderHistoryService = new OrderHistoryService()
         let mockUser = "dnyaneshwar_ware"
 
         global.fetch = jest.fn().mockImplementation(() => {
             return Promise.reject()
         });
 
-        let orderHistory = await orderHistoryService.getOrderHistory(mockUser)
+        let orderHistory = await getOrderHistory(mockUser)
         expect(orderHistory).toEqual([])
     })
 })
