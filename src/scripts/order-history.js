@@ -1,7 +1,7 @@
 import "../css/index.css";
 import '../css/order-history.css';
 
-import OrderHistoryService from "./OrderHistoryService.js";
+import OrderHistoryService from "./Services/OrderHistoryService.js";
 
 const submitButton = document.getElementById("submit")
 
