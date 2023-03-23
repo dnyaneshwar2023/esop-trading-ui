@@ -5,14 +5,13 @@ const html = fs.readFileSync("src/create-order.html");
 const { window } = new JSDOM(html);
 const { document } = window;
 
-
 describe("ESOP Trading Platform", () => {
-    let usernameInput
-    let esopSelector
+    let usernameInput;
+    let esopSelector;
 
     beforeEach(() => {
-        usernameInput = document.getElementById("username")
-        esopSelector = document.getElementById("esoptype")
+        usernameInput = document.getElementById("username");
+        esopSelector = document.getElementById("esoptype");
     });
 
     it("has the correct title", () => {
@@ -25,9 +24,17 @@ describe("ESOP Trading Platform", () => {
 
     it("esop type select value should be NORMAL by default", () => {
         expect(esopSelector.value).toBe("NON_PERFORMANCE");
+    });
 
-    })
+    it('order type should contain only "BUY" and "SELL" option', () => {
+        const orderType = document.getElementById("selector");
+        const allowedOptions = ["SELL", "BUY"];
 
+        const options = Object.keys(orderType.options).map(
+            (key) => orderType[key].value
+        );
 
-
+        expect(options.length).toEqual(2);
+        expect(allowedOptions.sort()).toEqual(options.sort());
+    });
 });
