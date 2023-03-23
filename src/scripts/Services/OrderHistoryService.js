@@ -1,4 +1,4 @@
-const getOrderHistory = async (userName) => {
+const getOrderHistory = (userName) => {
     return fetch(`http://localhost:8080/user/${userName}/order`, {
         method: "GET",
     })

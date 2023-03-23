@@ -1,4 +1,4 @@
-const placeOrder = async (body, userName) => {
+const placeOrder = (body, userName) => {
     return fetch(`http://localhost:8080/user/${userName}/order`, {
         method: "POST",
         body: JSON.stringify({ ...body }),
