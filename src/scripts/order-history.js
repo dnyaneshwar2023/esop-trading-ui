@@ -1,7 +1,7 @@
 import "../css/index.css";
 import '../css/order-history.css';
 
-import OrderHistoryService from "./Services/OrderHistoryService.js";
+import orderHistory from "./Services/OrderHistoryService.js";
 
 const submitButton = document.getElementById("submit")
 
@@ -29,18 +29,20 @@ const createCard = (order) => {
     return card
 }
 
-submitButton.onclick = (e) => {
+submitButton.onclick = async (e) => {
+    e.preventDefault()
+
     var userName = document.getElementById("username").value
 
-    let orderHistoryService = OrderHistoryService()
-    var history = orderHistoryService.getOrderHistory(userName)
+    var history = await orderHistory(userName)
+
+    console.log(history);
 
     var orderField = document.getElementById("orders")
     orderField.innerHTML = ""
     for (let i = 0; i < history.length; i++) {
         orderField.appendChild(createCard(history[i]))
     }
-    e.preventDefault()
 
 }
 
