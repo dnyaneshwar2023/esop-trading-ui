@@ -8,6 +8,7 @@ const { document } = window;
 describe("ESOP Trading Platform", () => {
     let usernameInput;
     let esopSelector;
+    let formInputLabels
 
     beforeEach(() => {
         usernameInput = document.getElementById("username");
@@ -21,6 +22,16 @@ describe("ESOP Trading Platform", () => {
     it("username input should be empty by default", () => {
         expect(usernameInput.value).toBe("");
     });
+
+    it("should check all input labels in html file", () => {
+        formInputLabels = document.getElementsByTagName("label")
+        const expectedLabels = ['Username:', 'Order Type:', 'Quantity:', 'Price:', 'ESOP Type:']
+
+        const labels = Object.keys(formInputLabels).map((key) => formInputLabels[key].textContent)
+
+        expect(labels.every((label) => expectedLabels.includes(label))).toBe(true);
+
+    })
 
     it("esop type select value should be NON_PERFORMANCE by default", () => {
         expect(esopSelector.value).toBe("NON_PERFORMANCE");
