@@ -1,5 +1,7 @@
+import { baseURL } from "../CONSTANTS";
+
 const getOrderHistory = (userName) => {
-    return fetch(`http://localhost:8080/user/${userName}/order`, {
+    return fetch(`${baseURL}/user/${userName}/order`, {
         method: "GET",
     })
         .then((response) =>

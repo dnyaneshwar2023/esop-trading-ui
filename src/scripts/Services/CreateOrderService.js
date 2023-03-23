@@ -1,5 +1,8 @@
+import { baseURL } from "../CONSTANTS";
+
 const placeOrder = (body, userName) => {
-    return fetch(`http://localhost:8080/user/${userName}/order`, {
+    console.log(baseURL)
+    return fetch(`${baseURL}/user/${userName}/order`, {
         method: "POST",
         body: JSON.stringify({ ...body }),
         headers: {

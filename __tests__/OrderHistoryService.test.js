@@ -1,3 +1,4 @@
+import { baseURL } from "../src/scripts/CONSTANTS";
 import getOrderHistory from "../src/scripts/Services/OrderHistoryService";
 
 
@@ -19,7 +20,7 @@ describe("Order History Tests", () => {
         let orderHistory = await getOrderHistory(mockUser)
         expect(orderHistory).toEqual(mockResponse)
         expect(mockFecth).toHaveBeenCalledTimes(1)
-        expect(mockFecth).toHaveBeenCalledWith(`http://localhost:8080/user/${mockUser}/order`, { method: "GET" })
+        expect(mockFecth).toHaveBeenCalledWith(`${baseURL}/user/${mockUser}/order`, { method: "GET" })
     })
 
     it("should return error message when there is an error fetching order history", async () => {
@@ -34,6 +35,6 @@ describe("Order History Tests", () => {
         let orderHistory = await getOrderHistory(mockUser)
         expect(orderHistory).toEqual([])
         expect(mockFecth).toHaveBeenCalledTimes(1)
-        expect(mockFecth).toHaveBeenCalledWith(`http://localhost:8080/user/${mockUser}/order`, { method: "GET" })
+        expect(mockFecth).toHaveBeenCalledWith(`${baseURL}/user/${mockUser}/order`, { method: "GET" })
     })
 })

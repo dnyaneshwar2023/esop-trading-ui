@@ -1,3 +1,4 @@
+import { baseURL } from "../src/scripts/CONSTANTS";
 import placeOrder from "../src/scripts/Services/CreateOrderService";
 
 describe("Create Order Tests", () => {
@@ -16,7 +17,7 @@ describe("Create Order Tests", () => {
         let response = await placeOrder(body, mockUser);
 
         expect(mockFetch).toHaveBeenCalledWith(
-            `http://localhost:8080/user/${mockUser}/order`,
+            `${baseURL}/user/${mockUser}/order`,
             {
                 method: "POST",
                 body: JSON.stringify({ ...body }),
