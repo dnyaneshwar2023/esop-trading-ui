@@ -22,8 +22,21 @@ describe("ESOP Trading Platform", () => {
         expect(usernameInput.value).toBe("");
     });
 
-    it("esop type select value should be NORMAL by default", () => {
+    it("esop type select value should be NON_PERFORMANCE by default", () => {
         expect(esopSelector.value).toBe("NON_PERFORMANCE");
+    });
+
+
+    it('ESOP type should contain only "NON_PERFORMANCE" and "PERFORMANCE"', () => {
+        const esopType = document.getElementById("esoptype");
+        const allowedOptions = ["NON_PERFORMANCE", "PERFORMANCE"];
+
+        const esopOptions = Object.keys(esopType.options).map(
+            (key) => esopType[key].text
+        );
+
+        expect(esopOptions.length).toEqual(2);
+        expect(allowedOptions.sort()).toEqual(esopOptions.sort());
     });
 
     it('order type should contain only "BUY" and "SELL" option', () => {
@@ -31,7 +44,7 @@ describe("ESOP Trading Platform", () => {
         const allowedOptions = ["SELL", "BUY"];
 
         const options = Object.keys(orderType.options).map(
-            (key) => orderType[key].value
+            (key) => orderType[key].text
         );
 
         expect(options.length).toEqual(2);
